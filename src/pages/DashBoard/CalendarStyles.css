@@ -1,0 +1,110 @@
+/* General calendar container */
+.fc {
+    background-color: #ffffff;
+    color: #222222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    padding: 20px; /* Added more padding for general spacing */
+}
+
+/* Header toolbar */
+.fc .fc-toolbar {
+    background: linear-gradient(90deg, #4a90e2, #357ABD);
+    color: #ffffff;
+    border-bottom: 2px solid #2a5abf;
+    box-shadow: 0 2px 5px rgba(70, 120, 220, 0.3);
+    border-radius: 8px 8px 0 0;
+    padding: 20px 40px; /* Increased padding */
+}
+
+/* Buttons in the toolbar */
+.fc .fc-button {
+    background-color: #ffffff;
+    color: #357ABD;
+    border: 1.5px solid #357ABD;
+    border-radius: 6px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(53, 122, 189, 0.3);
+    transition: all 0.3s ease;
+    padding: 10px 16px; /* Increased padding for bigger buttons */
+    margin: 0 6px; /* Added horizontal spacing between buttons */
+}
+
+.fc .fc-button:hover {
+    background-color: #357ABD;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(53, 122, 189, 0.6);
+}
+
+/* Active button state */
+.fc .fc-button.fc-button-active {
+    background-color: #234f8e !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px #234f8e;
+}
+
+/* Day grid and time grid cells */
+.fc .fc-daygrid-day,
+.fc .fc-timegrid-slot {
+    background-color: #fafafa;
+    border: 1px solid #e0e7ff;
+    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    margin: 6px; /* Increased margin for more spacing */
+    padding: 12px; /* Added padding inside each cell */
+}
+
+/* Day headers */
+.fc .fc-col-header-cell {
+    background: #4a90e2;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px 6px 0 0;
+    box-shadow: inset 0 -3px 8px rgba(0,0,0,0.15);
+    font-weight: 700;
+    padding: 12px 8px; /* Added padding for more height */
+}
+
+/* Event styling */
+.fc .fc-event {
+    background: linear-gradient(135deg, #43a047, #66bb6a);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(67, 160, 71, 0.4);
+    font-weight: 700;
+    padding: 8px 14px; /* Increased padding inside events */
+    transition: transform 0.2s ease;
+}
+
+.fc .fc-event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(67, 160, 71, 0.7);
+}
+
+/* Current time line */
+.fc .fc-timegrid-now-indicator-line {
+    border-color: #ff1744;
+    border-width: 3px;
+}
+
+/* Time grid lines */
+.fc .fc-timegrid-slot-lane,
+.fc .fc-timegrid-col {
+    border-color: #e0e7ff;
+}
+
+/* Today background */
+.fc .fc-day-today {
+    background: linear-gradient(90deg, #ccefff, #99d1ff) !important;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #66b0ff;
+}
+
+/* Title in the header */
+.fc .fc-toolbar-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-left: 10px; /* Added some left padding */
+}

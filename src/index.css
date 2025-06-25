@@ -1,3 +1,11 @@
+/* src/index.css */
+
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +18,134 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* Animations */
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(5deg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes confetti {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) scale(0.5);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 3s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.animate-confetti {
+  animation: confetti 3s ease-out infinite;
+}
+
+/* Ensure content is not hidden by fixed header */
+body {
+  padding-top: 0 !important;
+  /* Reset any global padding */
+}
+
+@layer utilities {
+  @keyframes floatSlow {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-8px) rotate(0deg);
+    }
+  }
+
+  @keyframes floatFast {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .animate-floatSlow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+
+  .animate-floatFast {
+    animation: floatFast 4s ease-in-out infinite;
+  }
+
+  @layer utilities {
+    @keyframes glowPink {
+
+      0%,
+      100% {
+        text-shadow: 0 0 5px rgb(255, 105, 128), 0 0 10px rgba(71, 248, 233, 0.7), 0 0 15px rgba(240, 52, 99, 0.9);
+      }
+
+      50% {
+        text-shadow: 0 0 10px rgba(52, 245, 139, 0.9), 0 0 20px rgb(247, 75, 101), 0 0 30px rgb(63, 222, 250);
+      }
+    }
+
+    .animate-glowPink {
+      animation: glowPink 3s ease-in-out infinite;
+    }
+  }
+
+
+
 }
