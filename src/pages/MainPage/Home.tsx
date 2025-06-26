@@ -87,6 +87,7 @@ const Home: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-black flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 w-full max-w-7xl items-center">
                 <div className="px-2 sm:px-4 text-center md:text-left">
                     <h1 className="text-2xl mt-6 sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#ed2c59] drop-shadow-md">
@@ -95,11 +96,11 @@ const Home: React.FC = () => {
                         <span className="text-white">Care That Covers It All</span>
                     </h1>
                     <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed max-w-md sm:max-w-lg mx-auto md:mx-0">
-                        Discover a world where <span className="text-pink-600 font-semibold">pets come first</span>. From grooming and training to healthy
-                        treats and stylish accessories,    
+                        Discover a world where <span className="text-[#ed2c59] font-semibold inline-block animate-pulseRing ">Pets Come First</span>. From grooming and training to healthy
+                        treats and stylish accessories,
                         <h1 className="text-2xl sm:text-1xl md:text-2xl lg:text-2xl xl:text-2xl font-extrabold leading-tight text-white drop-shadow-md">
-                              <strong className='text-[#ed2c59]'><WaveText text="PetSync360" /></strong>   is your trusted hub for everything pawsome!
-                            </h1>                    
+                            <strong className='text-[#ed2c59]'><WaveText text="PetSync360" /></strong>   is your trusted hub for everything pawsome!
+                        </h1>
                     </p>
                     <div className="mt-4 sm:mt-6 flex justify-center md:justify-start gap-4 relative z-10">
                         <button

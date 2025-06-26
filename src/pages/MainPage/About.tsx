@@ -9,7 +9,7 @@ import playstore from '../../assets/Images/playstore.png';
 import pawAnim from '../../assets/Animation/paw-animation2.json';
 import Lottie from 'lottie-react';
 
-const heading = 'font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight text-white tracking-tight';
+const heading = 'animate-glowPink font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight text-white tracking-tight';
 const subheading = 'text-white/90 text-base md:text-lg max-w-md leading-relaxed';
 const btn = 'inline-block mt-8 px-6 py-3 bg-white text-sky-600 font-semibold rounded-full shadow-lg hover:bg-sky-100 transition';
 
@@ -94,7 +94,7 @@ export const About: React.FC = () => {
 
   return (
 <motion.section
-  className="relative overflow-hidden bg-gradient-to-br from-sky-400 via-blue-300 to-cyan-400"
+  className="relative overflow-hidden bg-black"
   initial="hidden"
   animate="visible"
   exit="exit"
@@ -123,7 +123,7 @@ export const About: React.FC = () => {
       </style>
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 py-20 lg:py-28 flex flex-col lg:flex-row items-center gap-16">
         <motion.div className="flex-1 text-center lg:text-left" variants={textVariants}>
-          <h1 className={heading}>
+          <h1 className={heading} >
             Welcome to <span style={{ color: '#ed2c59' }}>PetSync 360</span>
           </h1>
           <motion.p className={`${subheading} mt-6`} variants={textVariants}>

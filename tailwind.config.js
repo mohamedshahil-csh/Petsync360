@@ -86,6 +86,7 @@ module.exports = {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-15px)' },
@@ -133,11 +134,10 @@ module.exports = {
         float: 'float 6s ease-in-out infinite',
         bgSlide: 'bgSlide 12s ease infinite',
         drift: 'drift 6s ease-in-out infinite',
-        zoomIn: 'zoomIn 0.6s ease-out forwards',
+        zoomIn: 'zoomIn 0.6s ease-out forwards infinite',
         rotateMove: 'rotateMove 6s linear infinite',
         float: 'float 5s ease-in-out infinite',
-        zoomIn: 'zoomIn 0.6s ease-out forwards',
-        fadeIn: 'fadeIn 1s ease-out forwards',
+        fadeIn: 'fadeIn 1s ease-out forwards ',
         fingerWave: 'fingerWave 1.4s ease-in-out infinite',
         hang: "hang 3.5s ease-in-out infinite",
         blurFlow: 'blurFlow 6s ease-in-out infinite',
