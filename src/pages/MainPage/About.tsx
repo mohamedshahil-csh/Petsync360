@@ -9,7 +9,7 @@ import playstore from '../../assets/Images/playstore.png';
 import pawAnim from '../../assets/Animation/paw-animation2.json';
 import Lottie from 'lottie-react';
 
-const heading = 'animate-glowPink font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight text-white tracking-tight';
+const heading = 'animated-bounce font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight text-white tracking-tight';
 const subheading = 'text-white/90 text-base md:text-lg max-w-md leading-relaxed';
 const btn = 'inline-block mt-8 px-6 py-3 bg-white text-sky-600 font-semibold rounded-full shadow-lg hover:bg-sky-100 transition';
 

@@ -69,13 +69,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onLogin }) => 
                 <p className="mt-4 text-sm text-gray-600 text-center">
                     Don’t have an account?{' '}
                     <Link
-                        to="/signup"
+                        to="/parentRegistration"
                         className="text-[#ed2c59] hover:underline"
                         onClick={onClose}
                     >
                         Sign Up
                     </Link>
                 </p>
+
                 <button
                     onClick={onClose}
                     className="mt-4 w-full bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg text-sm transition duration-300"

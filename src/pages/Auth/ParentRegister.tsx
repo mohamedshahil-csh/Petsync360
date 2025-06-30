@@ -1,15 +1,22 @@
 import React, { SyntheticEvent, useState } from 'react';
 import DynamicForm from '../../components/DynamicForms';
 import { PetParentFormSchema } from '../../components/DynamicForms/PetParent';
-import apiClient from '../../services/apiClient';
 import LoadingScreen from '../../components/LoadingScreen';
 import { SnackbarCloseReason } from '@mui/material';
 import CustomSnackbar from '../../components/CustomSnackbar';
+import { useNavigate } from 'react-router-dom';
 
-type Option = { label: string; value: string; first_name?: string; last_name?: string };
+
+type Option = {
+    label: string;
+    value: string;
+    first_name?: string;
+    last_name?: string;
+};
 
 const ParentRegistration: React.FC = () => {
     const [providerOptions] = useState<Option[]>([]);
+    const navigate = useNavigate();
     const [parentOptions] = useState<Option[]>([]);
     const [petOptions] = useState<Option[]>([]);
     const [chargecodeOptions] = useState<Option[]>([]);
@@ -20,6 +27,8 @@ const ParentRegistration: React.FC = () => {
         message: '',
         severity: 'info' as 'success' | 'error' | 'info' | 'warning',
     });
+
+    const API_KEY = 'bXaljR3Sd1Jy4oG0QGOiLRwIEpCzR13r';
 
     const handleCloseSnackbar = (
         _event: Event | SyntheticEvent<any, Event>,
@@ -44,7 +53,7 @@ const ParentRegistration: React.FC = () => {
                 role: 'parent',
                 mobile: formData.mobilenumber,
                 gender: formData.gender || undefined,
-                is_active: formData.status === 'Active' ? true : false,
+                is_active: formData.status === 'Active',
                 is_2fa: 0,
                 timezone_id: formData.timezone || 1,
                 address: {
@@ -59,33 +68,57 @@ const ParentRegistration: React.FC = () => {
         };
 
         console.log('Final Payload:', payload);
+
         try {
-            const response = await apiClient<any>('/v1/users/register', {
+            const response = await fetch('/v1/users/register', {
                 method: 'POST',
-                body: payload,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': API_KEY,
+                },
+                body: JSON.stringify(payload),
             });
-            setSnackbar({ open: true, message: 'Registration successfully!', severity: 'success' });
-            console.log('Registration successfully:', response);
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Registration failed');
+            }
+
+            const responseData = await response.json();
+            console.log('Registration successful:', responseData);
+
+            setSnackbar({
+                open: true,
+                message: 'Registration successful!',
+                severity: 'success',
+            });
+            navigate('/');
+
         } catch (error: any) {
             setSnackbar({
                 open: true,
-                message: error?.message || 'Error While Registration',
+                message: error?.message || 'Error while registering',
                 severity: 'error',
             });
-            console.error('Error While Registration:', error.message);
+            console.error('Error while registering:', error.message);
         } finally {
             setLoading(false);
         }
     };
 
-    const schema = PetParentFormSchema(providerOptions, chargecodeOptions, slotOptions, parentOptions, petOptions);
+    const schema = PetParentFormSchema(
+        providerOptions,
+        chargecodeOptions,
+        slotOptions,
+        parentOptions,
+        petOptions
+    );
+
     if (loading) return <LoadingScreen message="Loading..." />;
+
     return (
         <>
-            <DynamicForm
-                schema={schema}
-                onSubmit={handleFormSubmit}
-            />
+            <DynamicForm schema={schema} onSubmit={handleFormSubmit} />
             <CustomSnackbar
                 open={snackbar.open}
                 message={snackbar.message}

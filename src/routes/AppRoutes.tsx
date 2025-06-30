@@ -26,6 +26,7 @@ import PetsList from '../pages/Petowner/Pets';
 import AddAppointment from '../pages/Appointment/AddAppointment';
 import WhyPetSync from '../pages/MainPage/WhypetSync';
 import About from '../pages/MainPage/About';
+import ParentRegistration from '../pages/Auth/ParentRegister';
 
 export default function AppRoutes() {
   return (
@@ -33,6 +34,8 @@ export default function AppRoutes() {
       <Route path="/" element={<Home />} /> {/* Set Home as the main page */}
       <Route path="/AddAppointment" element={<AddAppointment />} />
       <Route path="/about" element={<About />} />
+      <Route path="/parentRegistration" element={<ParentRegistration />} />
+
       {/* <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/orders" element={<OrderListPage />} />
       <Route path="/orders/:orderId" element={<OrderDetailsPage />} />

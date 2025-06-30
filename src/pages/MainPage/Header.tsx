@@ -1,28 +1,60 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../../assets/Images/petsync-logo.png';
+import { motion, AnimatePresence, Variants } from 'framer-motion'; import logo from '../../assets/Images/petsync-logo.png';
+import ButtonAnimation from '../../assets/Animation/button.json';
+import Lottie from 'lottie-react';
+
 
 const navItems = [
   { label: 'Home', to: '#home' },
   { label: 'About Us', to: '#about' },
   { label: 'Services', to: '#services' },
-  { label: 'Shop', to: '/shop' }, // Keep as route if it's a separate page
-  { label: 'Vendors', to: '/vendors' }, // Keep as route if it's a separate page
-  { label: 'Resources', to: '/blog' }, // Keep as route if it's a separate page
-  { label: 'Contact', to: '#contact' },
+  { label: 'Shop', to: 'https://shop.petsync.in/', external: true },
+  { label: 'Vendors', to: '/vendors' },
+  { label: 'Resources', to: '/blog' },
+  // { label: 'Contact', to: '#contact' },
 ];
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Animation variants for mobile drawer
+  const drawerVariants: Variants = {
+    hidden: { x: '-100%', opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 25,
+        mass: 0.5
+      }
+    },
+    exit: {
+      x: '-100%',
+      opacity: 0,
+      transition: { duration: 0.3, ease: 'easeInOut' }
+    }
+  };
+
+  // Animation variants for nav items
+  const navItemVariants: Variants = {
+    hidden: { y: -10, opacity: 0 },
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: i * 0.1, type: 'spring', stiffness: 150, damping: 15 }
+    }),
+    hover: { scale: 1.1, color: '#ed2c59', transition: { type: 'spring', stiffness: 400 } }
+  };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
     if (to.startsWith('#')) {
-      e.preventDefault(); // Prevent default anchor behavior for in-page links
+      e.preventDefault();
       const section = document.querySelector(to);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
-        setMobileOpen(false); // Close mobile menu on click
+        setMobileOpen(false);
       }
     }
   };
@@ -32,7 +64,8 @@ const Header: React.FC = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 120, damping: 12 }}
-      className="fixed top-0 left-0 z-50 w-full backdrop-blur-lg bg-white/60 shadow-md"
+      className="fixed top-0 left-0 z-50 w-full bg-white shadow-md"
+
     >
       {/* ─────────────────── TOP BAR ─────────────────── */}
       <div className="container mx-auto flex items-center justify-between px-6 py-3">
@@ -90,14 +123,14 @@ const Header: React.FC = () => {
           ))}
         </nav>
 
-        {/* Desktop CTA (lg+) */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="hidden lg:inline-block rounded-full border border-gray-300 px-5 py-2 font-medium text-gray-700 transition hover:bg-gradient-to-r hover:from-pink-500 hover:to-orange-500 hover:text-white"
+        <a
+          href="#contact"
+          onClick={(e) => handleNavClick(e, '#contact')}
+          className="hidden lg:inline-block w-36 h-12"
         >
-          Contact
-        </motion.button>
+          <Lottie animationData={ButtonAnimation} loop={true} />
+        </a>
+
 
         {/* Hamburger (sm / md) */}
         <button
@@ -118,63 +151,117 @@ const Header: React.FC = () => {
             {/* Backdrop */}
             <motion.div
               key="backdrop"
-              className="fixed inset-0 z-40 bg-white"
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
               onClick={() => setMobileOpen(false)}
             />
+
 
             {/* Drawer */}
             <motion.aside
               key="drawer"
-              className="fixed top-0 left-0 z-50 h-full w-64 bg-white shadow-2xl flex flex-col gap-6 px-6 py-8"
-              initial={{ x: -280 }}
-              animate={{ x: 0 }}
-              exit={{ x: -280 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 25 }}
+              variants={drawerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="fixed top-0 left-0 z-[60] h-full w-72 bg-white !opacity-100 flex flex-col isolate will-change-transform"
+              style={{ backgroundColor: '#ffffff', opacity: 1 }}
             >
-              {/* Close button */}
-              <button
-                className="self-end mb-4 p-2 rounded-md hover:bg-gray-100 transition"
-                aria-label="Close menu"
-                onClick={() => setMobileOpen(false)}
-              >
-                <svg className="h-6 w-6 stroke-gray-800" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              {navItems.map((item) => (
-                item.to.startsWith('#') ? (
+              {/* Inner container with padding */}
+              <div className="flex flex-col h-full bg-white !opacity-100 px-6 py-8" style={{ backgroundColor: '#ffffff', opacity: 1 }}>
+                {/* Close button */}
+                {/* Close button + logo in one row */}
+                <div className="flex items-center justify-between mb-8">
+                  {/* Logo + text */}
                   <a
-                    key={item.label}
-                    href={item.to}
-                    onClick={(e) => handleNavClick(e, item.to)}
-                    className="text-lg font-semibold text-gray-800 hover:text-pink-600 transition"
+                    href="#home"
+                    onClick={(e) => handleNavClick(e, '#home')}
+                    className="flex items-center select-none"
                   >
-                    {item.label}
+                    <motion.img
+                      src={logo}
+                      alt="PetSync logo"
+                      className="w-10 animate-float"
+                      whileHover={{ rotate: 10, scale: 1.05 }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 10 }}
+                    />
+                    <span
+                      className="ml-[-2px] text-2xl font-extrabold tracking-tight"
+                      style={{ color: '#ed2c59' }}
+                    >
+                      etSync<span className="text-xs align-super">360</span>
+                    </span>
                   </a>
-                ) : (
-                  <Link
-                    key={item.label}
-                    to={item.to}
+
+                  {/* Close button */}
+                  <motion.button
+                    className="p-2 rounded-full bg-gray-100 hover:bg-pink-100 transition"
+                    aria-label="Close menu"
                     onClick={() => setMobileOpen(false)}
-                    className="text-lg font-semibold text-gray-800 hover:text-pink-600 transition"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.3, type: 'spring', stiffness: 300 }}
+                    whileHover={{ scale: 1.2, rotate: 90 }}
+                    whileTap={{ scale: 0.9 }}
                   >
-                    {item.label}
-                  </Link>
-                )
-              ))}
+                    <svg className="h-6 w-6 stroke-pink-600" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </motion.button>
+                </div>
+
+
+                {/* Nav items */}
+                <div className="flex flex-col gap-6 bg-white !opacity-100 flex-grow" style={{ backgroundColor: '#ffffff', opacity: 1 }}>
+                  {navItems.map((item, i) => (
+                    <motion.div
+                      key={item.label}
+                      custom={i}
+                      variants={navItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      whileHover="hover"
+                    >
+                      {item.to.startsWith('#') ? (
+                        <a
+                          href={item.to}
+                          onClick={(e) => handleNavClick(e, item.to)}
+                          className="text-gray-800 text-xl font-semibold px-4 py-3 rounded-lg hover:bg-pink-50 hover:text-pink-600 transition"
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        <Link
+                          to={item.to}
+                          onClick={() => setMobileOpen(false)}
+                          className="text-gray-800 text-xl font-semibold px-4 py-3 rounded-lg hover:bg-pink-50 hover:text-pink-600 transition"
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Lottie CTA at bottom */}
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="mt-6 mb-2 w-full flex justify-center"
+                >
+                  <div className="w-34 h-10">
+                    <Lottie animationData={ButtonAnimation} loop={true} />
+                  </div>
+                </a>
+              </div>
+
+
 
               {/* CTA inside drawer */}
-              <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, '#contact')}
-                className="mt-auto inline-block rounded-full border border-gray-300 px-5 py-2 font-medium text-gray-700 hover:bg-gradient-to-r hover:from-pink-500 hover:to-orange-500 hover:text-white transition"
-              >
-                Contact
-              </a>
+
             </motion.aside>
           </>
         )}
