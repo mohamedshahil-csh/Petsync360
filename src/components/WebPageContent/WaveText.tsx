@@ -7,7 +7,7 @@ const WaveText: React.FC<Props> = ({ text }) => (
     {text.split('').map((ch, i) => (
       <span
         key={i}
-        className="inline-block animate-glowPink"
+        className="inline-block animate-glowPink text-black"
         style={{ animationDelay: `${i * 0.1}s` }} // Adjust delay if needed
       >
         {ch === ' ' ? '\u00A0' : ch}

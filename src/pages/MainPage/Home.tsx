@@ -11,6 +11,10 @@ import apiClient from '../../services/apiClient';
 import { API_ENDPOINTS } from '../../routes/apiEndpoints';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import CountUp from 'react-countup';
+import AnimatedScrollSection from '../../components/WebPageContent/AnimatedScrollSection';
+
+
 
 const floatingIcons = [
     { src: paw, pos: 'top-[5%] left-[65%]', animation: 'float' },
@@ -49,49 +53,23 @@ const Home: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
     const navigate = useNavigate();
-    const [service_providers, setService_Providers] = useState<any>(null);
-    console.log("service_providers", service_providers)
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    const [provider, setProvider] = useState<any[]>([]);
-    console.log("provider", provider)
-    const [parents, setParents] = useState<any[]>([]);
-    console.log("parents", parents)
-    const [pets, setPets] = useState<any[]>([]);
-    console.log("pets", pets)
 
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+    const flipVariant = {
+        initial: { rotateY: 0 },
+        animate: {
+            rotateY: 360,
+            transition: {
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+            },
+        },
+    };
 
 
-    useEffect(() => {
-        async function fetchDashboardAndAppointments() {
-            setLoading(true);
-            setError(null);
-            try {
-
-                const fetchProviders = await apiClient(`v1/resource/provider/all`, { method: "GET" }) as any;
-                setProvider(fetchProviders?.data?.providers?.length);
-                const fetchParents = await apiClient(`v1/resource/patients/all`, { method: "GET" }) as any;
-                const parents = fetchParents.data.patients?.length;
-                setParents(parents);
-                const fetchServiceProvider = await apiClient(`v1/resource/ServiceProvider/all`, { method: "GET" }) as any;
-                const service_providers = fetchServiceProvider.data.service_providers?.length;
-                setService_Providers(service_providers)
-                const fetchPets = await apiClient(`v1/resource/pets/all`, { method: "GET" }) as any;
-                const pets = fetchPets.data.pets[0]?.length;
-                setPets(pets)
-
-
-            } catch (err: any) {
-                setError(err.message || "Failed to load data");
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchDashboardAndAppointments();
-    }, []);
 
 
     const handleLogin = async (
@@ -108,6 +86,7 @@ const Home: React.FC = () => {
                 body: { username, password, role },
             });
 
+            // Grab the token from the right place
             const { token, token_expiration_time } = res.data;
 
             localStorage.setItem('token', token);
@@ -121,7 +100,6 @@ const Home: React.FC = () => {
             throw new Error(err.message || 'Login failed');
         }
     };
-
     // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -147,7 +125,7 @@ const Home: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center overflow-hidden pt-16 sm:pt-20 relative">
+        <div className="min-h-screen bg-white flex items-center justify-center overflow-hidden pt-16 sm:pt-20 relative">
             {/* Animated background elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {[...Array(20)].map((_, i) => (
@@ -168,48 +146,85 @@ const Home: React.FC = () => {
                     className="px-2 sm:px-4 text-center md:text-left relative z-10"
                     variants={itemVariants}
                 >
-                    <h1 className="text-2xl mt-6 sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#ed2c59] drop-shadow-md">
-                        <LeadingWaveText text="All Animals, Great or Small," />
-                        <br />
-                        <span className="text-white ">Care That Covers It All</span>
-                    </h1>
-                    <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-white leading-relaxed max-w-md sm:max-w-lg mx-auto md:mx-0">
-                        Discover a world where Pets Come First. From grooming and training to healthy
-                        treats and stylish accessories,
-                        <h1 className="text-2xl sm:text-1xl md:text-2xl lg:text-2xl xl:text-2xl font-extrabold leading-tight text-white drop-shadow-md">
-                            <strong className='text-pink-200'><WaveText text="PetSync360" /></strong> is your trusted hub for everything pawsome!
-                        </h1>
-                    </p>
-                    {/* Statistics Cards */}
-                    <motion.div
-                        className="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 justify-center md:justify-start"
-                        variants={itemVariants}
-                    >
+                    <div className="text-2xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-extrabold leading-tight drop-shadow-md text-center md:text-left">
+                        <AnimatedScrollSection type="slide" delay={0.01}>
+                            <div className="text-[#ed2c59]">
+                                <LeadingWaveText text="All Animals, Great" />
+                            </div>
+                            <div className="flex justify-center lg:justify-center md:justify-start text-[#ed2c59]">
+                                <span>or Small</span>
+                            </div>
+                            <div className="text-black lg:text-5xl sm:text-4xl">Care That Covers It All</div>
+                        </AnimatedScrollSection>
+                    </div>
+
+                    <AnimatedScrollSection type="slide" delay={0.1}>
+                        <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-black leading-relaxed max-w-md sm:max-w-lg mx-auto md:mx-0">
+                            Discover a world where Pets Come First. From grooming and training to healthy
+                            treats and stylish accessories,
+                            <h1 className="text-2xl sm:text-1xl md:text-2xl lg:text-2xl xl:text-2xl font-extrabold leading-tight text-black drop-shadow-md">
+                                <strong className='text-pink-200'><WaveText text="PetSync360" /></strong> is your trusted hub for everything pawsome!
+                            </h1>
+                        </p>
+                    </AnimatedScrollSection>
+                    <AnimatedScrollSection type="popup" delay={0.01}>
                         <motion.div
-                            className="animate-wave bg-white/10 backdrop-blur-md rounded-xl p-4 text-center shadow-lg border border-white/20"
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
+                            className="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-center md:justify-start"
+                            variants={itemVariants}
                         >
-                            <h3 className="text-lg sm:text-xl font-bold text-[#ed2c59]">{provider ?? 0}+ </h3>
-                            <p className="text-sm sm:text-base text-white animate-wave">Doctors</p>
+                            {/* Veterinarians */}
+                            <AnimatedScrollSection type="popup" delay={0.01}>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                >
+                                    <h3 className="text-lg sm:text-xl font-extrabold text-[#ed2c59]">
+                                        <CountUp
+                                            start={0}
+                                            end={100}
+                                            duration={4}
+                                            enableScrollSpy
+                                            scrollSpyDelay={200}
+                                            useEasing
+                                            separator=","
+                                        />+
+                                    </h3>
+                                    <p className="text-sm sm:text-base text-black">Veterinarians</p>
+                                </motion.div>
+                            </AnimatedScrollSection>
+                            {/* Pet Parents */}
+                            <AnimatedScrollSection type="popup" delay={0.03}>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#ed2c59]">
+                                        India & US
+                                    </h3>
+                                    <p className="text-sm sm:text-base text-black animate-wave">Pet Parents</p>
+                                </motion.div>
+                            </AnimatedScrollSection>
+                            {/* Service Providers - Centered on sm and md screens */}
+                            <AnimatedScrollSection type="popup" delay={0.05}>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                >
+                                    <h3 className="text-lg sm:text-xl font-extrabold text-[#ed2c59]">
+                                        <CountUp
+                                            start={0}
+                                            end={160}
+                                            duration={3}
+                                            enableScrollSpy
+                                            scrollSpyDelay={200}
+                                            useEasing
+                                            separator=","
+                                        />+
+                                    </h3>
+                                    <p className="text-sm sm:text-base text-black">Service Providers</p>
+                                </motion.div>
+                            </AnimatedScrollSection>
                         </motion.div>
-                        <motion.div
-                            className="animate-wave bg-white/10 backdrop-blur-md rounded-xl p-4 text-center shadow-lg border border-white/20"
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <h3 className="text-lg sm:text-xl font-bold text-[#ed2c59]">{parents ?? 0}+ </h3>
-                            <p className="text-sm sm:text-base text-white animate-wave">Parents</p>
-                        </motion.div>
-                        <motion.div
-                            className="animate-wave bg-white/10 backdrop-blur-md rounded-xl p-4 text-center shadow-lg border border-white/20"
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <h3 className="text-lg sm:text-xl font-bold text-[#ed2c59]">{service_providers ?? 0}+ </h3>
-                            <p className="text-sm sm:text-base text-white animate-wave">Service Providers</p>
-                        </motion.div>
-                    </motion.div>
+                    </AnimatedScrollSection>
+
                     <motion.div
                         className="mt-8 sm:mt-10 flex justify-center md:justify-start gap-4 relative z-10"
                         variants={itemVariants}
@@ -228,7 +243,6 @@ const Home: React.FC = () => {
                         </motion.button>
                     </motion.div>
                 </motion.div>
-
                 <motion.div
                     className="relative flex justify-center items-center mt-6 md:mt-0"
                     variants={itemVariants}

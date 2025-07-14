@@ -8,32 +8,35 @@ import appstore from '../../assets/Images/apple.png';
 import playstore from '../../assets/Images/playstore.png';
 import pawAnim from '../../assets/Animation/paw-animation2.json';
 import Lottie from 'lottie-react';
+import AnimatedScrollSection from '../../components/WebPageContent/AnimatedScrollSection';
+import petsyncvideo from '../../assets/Gifs/petsync2.gif'
 
-const heading = 'animated-bounce font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight text-white tracking-tight';
-const subheading = 'text-white/90 text-base md:text-lg max-w-md leading-relaxed';
-const btn = 'inline-block mt-8 px-6 py-3 bg-white text-sky-600 font-semibold rounded-full shadow-lg hover:bg-sky-100 transition';
+
+const heading = 'animated-bounce font-extrabold text-3xl md:text-4xl lg:text-5xl leading-tight text-black tracking-tight';
+const subheading = 'text-black/90 text-base md:text-lg max-w-md leading-relaxed';
+const btn = 'inline-block mt-8 px-6 py-3 bg-black text-sky-600 font-semibold rounded-full shadow-lg hover:bg-sky-100 transition';
 
 // Animation variants for orchestrating entry effects
 const containerVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
     },
-    exit: {
-      opacity: 0,
-      y: -30,
-      transition: {
-        duration: 0.5,
-        ease: 'easeInOut',
-      },
+  },
+  exit: {
+    opacity: 0,
+    y: -30,
+    transition: {
+      duration: 0.5,
+      ease: 'easeInOut',
     },
-  };
-  
+  },
+};
+
 
 const textVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -93,15 +96,15 @@ export const About: React.FC = () => {
   const sideImgs = [sideImg1, sideImg2, sideImg3];
 
   return (
-<motion.section
-  className="relative overflow-hidden bg-black"
-  initial="hidden"
-  animate="visible"
-  exit="exit"
-  variants={containerVariants}
->
+    <motion.section
+      className="relative overflow-hidden bg-black"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={containerVariants}
+    >
 
-      <div className="pointer-events-none absolute inset-0 before:absolute before:inset-0 before:bg-[radial-gradient(#ffffff33_1px,transparent_1px)] before:bg-[length:20px_20px]" />
+      <div className="pointer-events-none absolute inset-0 bg-white before:absolute before:inset-0 " />
       <style>
         {`
           @keyframes rotateY {
@@ -122,15 +125,24 @@ export const About: React.FC = () => {
         `}
       </style>
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 py-20 lg:py-28 flex flex-col lg:flex-row items-center gap-16">
+
         <motion.div className="flex-1 text-center lg:text-left" variants={textVariants}>
-          <h1 className={heading} >
-            Welcome to <span style={{ color: '#ed2c59' }}>PetSync 360</span>
-          </h1>
+          <AnimatedScrollSection type="slide" delay={0.01}>
+            <h1 className={heading} >
+              Welcome to <span style={{ color: '#ed2c59' }}>PetSync 360</span>
+            </h1>
+          </AnimatedScrollSection>
+
           <motion.p className={`${subheading} mt-6`} variants={textVariants}>
-            PetSync 360 is a smart, cloud-based care platform that empowers pet parents, veterinarians, and pet businesses with digital tools to track health, connect with professionals, shop essentials, and manage services—anytime, anywhere.
+            <AnimatedScrollSection type="slide" delay={0.01}>
+              PetSync 360 is a smart, cloud-based care platform that empowers pet parents, veterinarians, and pet businesses with digital tools to track health, connect with professionals, shop essentials, and manage services—anytime, anywhere.
+            </AnimatedScrollSection>
           </motion.p>
           <motion.p className={`${subheading} mt-6`} variants={textVariants}>
-            From digital health records to IoT-based monitoring, from emergency teleconsultations to on-demand grooming and training, PetSync 360 simplifies your responsibilities and strengthens your pet’s wellbeing.
+            <AnimatedScrollSection type="slide" delay={0.01}>
+              From digital health records to IoT-based monitoring, from emergency teleconsultations to on-demand grooming and training, PetSync 360 simplifies your responsibilities and strengthens your pet’s wellbeing.
+            </AnimatedScrollSection>
+
           </motion.p>
           <motion.div
             className="mt-8 flex flex-col gap-3 items-center md:flex-row md:gap-4 md:justify-center lg:justify-start"
@@ -138,53 +150,38 @@ export const About: React.FC = () => {
           >
             <motion.a
               href="#"
-              className="flex items-center gap-2 px-8 py-2 bg-white rounded-xl shadow-lg hover:bg-gray-100 transition"
+              className="flex items-center gap-2 px-8 py-2 bg-black rounded-xl shadow-lg hover:bg-gray-800 transition"
               variants={buttonVariants}
             >
               <img src={playstore} alt="Play Store" className="w-6 h-6" />
               <div className="flex flex-col leading-tight">
                 <span className="text-[10px] text-gray-500">Get it on</span>
-                <span className="text-base font-semibold text-gray-800">Play Store</span>
+                <span className="text-base font-semibold text-white">Play Store</span>
               </div>
             </motion.a>
             <motion.a
               href="#"
-              className="flex items-center gap-2 px-8 py-2 bg-white rounded-xl shadow-lg hover:bg-gray-100 transition"
+              className="flex items-center gap-2 px-8 py-2 bg-black rounded-xl shadow-lg hover:bg-gray-800 transition"
               variants={buttonVariants}
             >
-              <img src={appstore} alt="App Store" className="w-6 h-6" />
+              <img src={appstore} alt="App Store" className="w-6 h-6 invert brightness-q"
+              />
               <div className="flex flex-col leading-tight">
                 <span className="text-[10px] text-gray-500">Download on the</span>
-                <span className="text-base font-semibold text-gray-800">App Store</span>
+                <span className="text-base font-semibold text-white ">App Store</span>
               </div>
             </motion.a>
           </motion.div>
         </motion.div>
 
-        <motion.div className="flex-1 relative flex justify-center perspective-[1000px]" variants={containerVariants}>
-          <motion.img
-            src={heroImg}
-            alt="Main pet"
-            className="w-72 sm:w-80 md:w-96 object-cover rounded-3xl shadow-2xl animate-float"
-            variants={heroImageVariants}
+        <div className="flex justify-center md:justify-end">
+          <img
+            src={petsyncvideo}
+            alt="PetSync AI Animation"
+            className="w-64 sm:w-80 md:w-96 lg:w-[30rem] object-contain"
           />
-          {sideImgs.map((src, idx) => {
-            const posIndex = sequence[(idx + step) % 3];
-            const posClass = positions[posIndex];
-            const z = posIndex === 0 ? 'z-30' : posIndex === 1 ? 'z-20' : 'z-10';
-            const visibilityClass = posIndex === 2 ? 'hidden md:block lg:block' : 'hidden lg:block';
+        </div>
 
-            return (
-              <motion.img
-                key={idx}
-                src={src}
-                alt=""
-                className={`${posClass} ${z} ${visibilityClass} w-28 sm:w-32 md:w-36 rounded-full shadow-xl transition-all duration-700 ease-in-out animate-rotateY hover:scale-110`}
-                variants={sideImageVariants(idx)}
-              />
-            );
-          })}
-        </motion.div>
       </div>
       {/* Wave Shape at Bottom */}
       <motion.div className="absolute bottom-0 left-0 right-0" variants={textVariants}>
