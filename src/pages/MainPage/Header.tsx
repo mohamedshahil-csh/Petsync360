@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, Variants } from 'framer-motion'; import logo from '../../assets/Images/petsync-logo.png';
+import { motion, AnimatePresence, Variants } from 'framer-motion'; 
+import logo from '../../assets/Images/petsync-logo.png';
 import ButtonAnimation from '../../assets/Animation/button.json';
 import Lottie from 'lottie-react';
 
