@@ -138,12 +138,11 @@ export const About: React.FC = () => {
               PetSync 360 is a smart, cloud-based care platform that empowers pet parents, veterinarians, and pet businesses with digital tools to track health, connect with professionals, shop essentials, and manage services—anytime, anywhere.
             </AnimatedScrollSection>
           </motion.p>
-          <motion.p className={`${subheading} mt-6`} variants={textVariants}>
+          {/* <motion.p className={`${subheading} mt-6`} variants={textVariants}>
             <AnimatedScrollSection type="slide" delay={0.01}>
               From digital health records to IoT-based monitoring, from emergency teleconsultations to on-demand grooming and training, PetSync 360 simplifies your responsibilities and strengthens your pet’s wellbeing.
             </AnimatedScrollSection>
-
-          </motion.p>
+          </motion.p> */}
           <motion.div
             className="mt-8 flex flex-col gap-3 items-center md:flex-row md:gap-4 md:justify-center lg:justify-start"
             variants={containerVariants}

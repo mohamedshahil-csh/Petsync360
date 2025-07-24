@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        outfit: ['Outfit', 'sans-serif'],
+      },
       keyframes: {
         pop: {
           '0%,100%': { transform: 'scale(0)', opacity: 0 },

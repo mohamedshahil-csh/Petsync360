@@ -11,8 +11,8 @@ const LeadingWaveText: React.FC<Props> = ({ text }) => {
         <span key={wIdx} className="inline-block">
           {/* first letter waves */}
           <span
-            className="inline-block animate-wave"
-            style={{ animationDelay: `${wIdx * 0.25}s` }}   // stagger by word
+            className="font-outfit inline-block animate-wave"
+            style={{ animationDelay: `${wIdx * 0.25}s` ,fontFamily: 'Outfit, sans-serif'}}   // stagger by word
           >
             {word.charAt(0)}
           </span>

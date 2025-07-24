@@ -1,35 +1,112 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import PetBanner from '../../assets/Images/PetBanner1.png';
+"use client";
+import { HeroParallax } from "../../components/WebPageContent/UI/hero-parallax";
 
-const cardItems = [
-  { id: 1, label: 'Teleconsult', delay: 0.15 },
-  { id: 2, label: 'Pet Product', delay: 0.25 },
-  { id: 3, label: 'Pet Service', delay: 0.35 },
+export function HeroParallaxDemo() {
+  return <HeroParallax products={products} />;
+}
+
+export const products = [
+  {
+    title: "Moonbeam",
+    link: "https://gomoonbeam.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
+  },
+  {
+    title: "Cursor",
+    link: "https://cursor.so",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/cursor.png",
+  },
+  {
+    title: "Rogue",
+    link: "https://userogue.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+  },
+
+  {
+    title: "Editorially",
+    link: "https://editorially.org",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/editorially.png",
+  },
+  {
+    title: "Editrix AI",
+    link: "https://editrix.ai",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/editrix.png",
+  },
+  {
+    title: "Pixel Perfect",
+    link: "https://app.pixelperfect.quest",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
+  },
+
+  {
+    title: "Algochurn",
+    link: "https://algochurn.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+  },
+  {
+    title: "Tailwind Master Kit",
+    link: "https://tailwindmasterkit.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+  },
+  {
+    title: "SmartBridge",
+    link: "https://smartbridgetech.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
+  },
+  {
+    title: "Renderwork Studio",
+    link: "https://renderwork.studio",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
+  },
+
+  {
+    title: "Creme Digital",
+    link: "https://cremedigital.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
+  },
+  {
+    title: "Golden Bells Academy",
+    link: "https://goldenbellsacademy.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
+  },
+  {
+    title: "Invoker Labs",
+    link: "https://invoker.lol",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/invoker.png",
+  },
+  {
+    title: "E Free Invoice",
+    link: "https://efreeinvoice.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+  },
 ];
+
 
 const WhatIsPetSync = () => (
   <section
     className="relative overflow-hidden bg-cover bg-center"
-    style={{ backgroundImage: `url(${PetBanner})`, width: '100%', height: '600px' }}
   >
-    <div className="absolute inset-0 pointer-events-none" />
 
-    {/* Wrapper: headline + row of cards */}
-    <div className="relative z-10 mt-10 ml-8 flex flex-col gap-8">
-      {/* Headline */}
-      <motion.h2
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="text-2xl md:text-2xl font-extrabold text-black drop-shadow-lg"
-      >
-        Personalized shopping comes together on a single smart platform.
-Whether you’re raising a puppy, nurturing a kitten, caring for a senior pet, or managing exotic animals, PetSync 360 is your trusted partner for proactive, personalized, and lifelong pet care.
-
-      </motion.h2>
-
-    </div>
   </section>
 );
 
