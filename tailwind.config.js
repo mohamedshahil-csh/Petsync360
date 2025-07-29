@@ -115,10 +115,15 @@ module.exports = {
           '50%': { filter: 'blur(0)', opacity: 1 },
           '100%': { filter: 'blur(4px)', opacity: 0.6 },
         },
+        slip: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
       },
 
 
       animation: {
+        slip: 'slip 1.5s ease-in-out infinite',
         pop: 'pop 4s ease-in-out infinite',
         'spin-slow': 'spin 3s linear infinite',
         fadeIn: 'fadeIn 1s ease-out forwards',

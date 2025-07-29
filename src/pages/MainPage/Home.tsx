@@ -304,6 +304,7 @@ const Home: React.FC = () => {
           </motion.div>
         </motion.div>
       </motion.div>
+      
       <motion.div
         onClick={openModal}
         className="fixed bottom-8 right-8 z-50 hidden md:block lg:block"

@@ -9,6 +9,9 @@ import WhyPetSync from './WhypetSync';
 import Banner from './Banner';
 import ShopSection, { AnimatedTestimonialsDemo } from './Shop';
 import { AnimatedTestimonials } from '../../components/WebPageContent/UI/animated-testimonials';
+import { CardHoverEffectDemo } from './Features';
+import PetSyncBooking from './Booking';
+import { TimelineDemo } from './Masters';
 
 const Parent: React.FC = () => {
   return (
@@ -31,9 +34,9 @@ const Parent: React.FC = () => {
         <div id="about" className="min-h-screen">
           <About />
         </div>
-        <div id="what-is-petsync" className="min-h-screen">
+        {/* <div id="what-is-petsync" className="min-h-screen">
           <HeroParallaxDemo />
-        </div>
+        </div> */}
         {/* <div id="petsync" className="min-h-screen">
           <Petsync />
         </div> */}
@@ -44,10 +47,16 @@ const Parent: React.FC = () => {
           <WhyPetSync />
         </div> */}
 
-        <div id="services" className="min-h-screen">
+        <div id="services" className="bg-black min-h-screen">
           <AnimatedTestimonialsDemo />
         </div>
+        <div id="" className="bg-black min-h-screen">
+          <CardHoverEffectDemo />
+        </div>
 
+        <div id="" className="bg-black min-h-screen">
+          <TimelineDemo />
+        </div>
       </div>
     </>
   );
