@@ -12,6 +12,8 @@ import { AnimatedTestimonials } from '../../components/WebPageContent/UI/animate
 import { CardHoverEffectDemo } from './Features';
 import PetSyncBooking from './Booking';
 import { TimelineDemo } from './Masters';
+import WhyPetParentsLovePetSync360 from './WhyPetParentsLovePetSync360';
+import Vendor from './Vendor';
 
 const Parent: React.FC = () => {
   return (
@@ -46,6 +48,12 @@ const Parent: React.FC = () => {
         {/* <div id="why-petsync" className="min-h-screen">
           <WhyPetSync />
         </div> */}
+          <div id="why-petsync" className="min-h-screen">
+          <WhyPetParentsLovePetSync360 />
+        </div>
+         <div id="vendor" className="min-h-screen">
+          <Vendor />
+        </div>
 
         <div id="services" className="bg-black min-h-screen">
           <AnimatedTestimonialsDemo />
