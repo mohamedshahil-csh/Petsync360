@@ -61,7 +61,7 @@ export const HoverEffect = ({
                                 <img src={item.icon} alt="" className="w-12 h-12 object-contain" />
                             </motion.div>
                         )}
-                        <CardTitle>{item.title}</CardTitle>
+                        <CardTitle >{item.title}</CardTitle>
                         <CardDescription>{item.description}</CardDescription>
                     </Card>
                 </a>
@@ -108,7 +108,7 @@ export const CardTitle = ({
     return (
         <motion.h4
             className={cn(
-                "text-white text-lg font-semibold tracking-tight",
+                "text-white text-lg font-semibold tracking-tight font-cinzel",
                 className
             )}
             initial={{ opacity: 0, y: 10 }}
@@ -130,7 +130,7 @@ export const CardDescription = ({
     return (
         <motion.p
             className={cn(
-                "mt-4 text-gray-300 dark:text-gray-400 tracking-wide leading-relaxed text-sm",
+                "mt-4 text-gray-300 dark:text-gray-400 tracking-wide leading-relaxed text-sm font-jost",
                 className
             )}
             initial={{ opacity: 0, y: 10 }}

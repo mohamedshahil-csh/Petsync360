@@ -1,63 +1,13 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { AnimatedTestimonials } from '../../components/WebPageContent/UI/animated-testimonials';
-import Service from '../../assets/Images/PetService.jpg';
-import MobileShoping from '../../assets/Images/PetHealth.png';
-import Booking from '../../assets/Images/BookAppoinment.png';
-import ECommerce from '../../assets/Images/Ecommerce.png';
-import Petcare from '../../assets/Images/4.jpg';
-import ABout from '../../assets/Images/WeOffer.png';
 
-
-// Updated pet-themed icons with modern SVGs or better placeholders
 const petIcons = [
   { src: 'https://via.placeholder.com/50?text=🛒', pos: 'top-[5%] left-[8%]', animation: 'float' },
   { src: 'https://via.placeholder.com/50?text=🐶', pos: 'top-[15%] right-[8%]', animation: 'pulse' },
   { src: 'https://via.placeholder.com/50?text=🎾', pos: 'bottom-[10%] left-[12%]', animation: 'bounce' },
   { src: 'https://via.placeholder.com/50?text=🍖', pos: 'bottom-[5%] right-[10%]', animation: 'float' },
 ];
-
-
-export function AnimatedTestimonialsDemo() {
-  const testimonials = [
-    {
-      quote: "Medical Support, Anytime, Anywhere, Instant teleconsultations & triage Home visit bookings",
-      name: "What We Offer",
-      designation: "Digital prescriptions & emergency help",
-      src:ABout,
-    },
-    {
-      quote:
-        "Grooming, training, boarding, sitting Behavioural support & breeding aid.",
-      name: "360° Pet Services",
-      designation: "Your Pet is Our Priority",
-      src:Service,
-    },
-    {
-      quote:
-        " Vet-reviewed pet essentials Filters for breed, age and allergies among othes Order tracking & secure payments.",
-      name: "Personalized E-commerce",
-      designation: "For Your Pet Get More Protien",
-      src:ECommerce,
-    },
-    {
-      quote:
-        " Real-time vitals (IoT ready) Vaccine & medication reminders Growth & wellness milestone tracking.",
-      name: "Smart Health Monitoring",
-      designation: "Engineering Lead at DataPro",
-      src: MobileShoping,
-    },
-    {
-      quote:
-        " Real-time vitals (IoT ready) Vaccine & medication reminders Growth & wellness milestone tracking.",
-      name: "Book An Appoinment",
-      designation: "Seamless claims through the app",
-      src: Booking,
-    },
-  ];
-  return <AnimatedTestimonials testimonials={testimonials} />;
-}
 
 const ShopSection: React.FC = () => {
   const containerVariants: Variants = {
@@ -105,8 +55,8 @@ const ShopSection: React.FC = () => {
               animation === 'float'
                 ? { y: [0, -20, 0], rotate: [0, 5, -5, 0] }
                 : animation === 'pulse'
-                  ? { scale: [1, 1.2, 1] }
-                  : { y: [0, -25, 0] }
+                ? { scale: [1, 1.2, 1] }
+                : { y: [0, -25, 0] }
             }
             transition={{
               duration: 3.5,

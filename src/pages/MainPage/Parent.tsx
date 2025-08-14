@@ -7,13 +7,23 @@ import Services from './Service';
 import WhatIsPetSync, { HeroParallaxDemo } from './WhatIsPetsync';
 import WhyPetSync from './WhypetSync';
 import Banner from './Banner';
-import ShopSection, { AnimatedTestimonialsDemo } from './Shop';
+import ShopSection from './Shop';
 import { AnimatedTestimonials } from '../../components/WebPageContent/UI/animated-testimonials';
 import { CardHoverEffectDemo } from './Features';
 import PetSyncBooking from './Booking';
-import { TimelineDemo } from './Masters';
+
 import WhyPetParentsLovePetSync360 from './WhyPetParentsLovePetSync360';
 import Vendor from './Vendor';
+import Footer from './Footer';
+import ResourcesSupport from './ResourcesSupport';
+import { Timeline } from '../../components/WebPageContent/UI/timeline';
+import TimelineDemo from './Masters';
+import VeterinariansSection from './VeterinariansSection';
+import { AnimatedTestimonialsDemo } from './AnimatedTestimonialsDemoserive';
+import RotatingCube from './Cube';
+import ManualRotatingCubes from './Cube';
+import GalaxyScene from './Cube';
+import GalaxyFlyThrough from './GalaxyFlyThrough';
 
 const Parent: React.FC = () => {
   return (
@@ -51,20 +61,34 @@ const Parent: React.FC = () => {
           <div id="why-petsync" className="min-h-screen">
           <WhyPetParentsLovePetSync360 />
         </div>
+        <div id="" className="bg-black min-h-screen">
+          <CardHoverEffectDemo />
+        </div>
+         <div id="VeterinariansSection" className="bg-black min-h-screen">
+          <VeterinariansSection />
+        </div>
          <div id="vendor" className="min-h-screen">
           <Vendor />
         </div>
+        {/* <div id="RotatingCube" className="min-h-screen">
+          <GalaxyFlyThrough />
+        </div> */}
 
         <div id="services" className="bg-black min-h-screen">
           <AnimatedTestimonialsDemo />
         </div>
-        <div id="" className="bg-black min-h-screen">
-          <CardHoverEffectDemo />
-        </div>
+        
 
-        <div id="" className="bg-black min-h-screen">
+        <div id="TimelineDemo" className="bg-black min-h-screen">
           <TimelineDemo />
         </div>
+
+        <div id="ResourcesSupport" className="bg-black min-h-screen">
+          <ResourcesSupport />
+        </div>
+          <div id="Footer" className="bg-black">
+  <Footer />
+</div>
       </div>
     </>
   );

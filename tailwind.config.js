@@ -5,9 +5,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
-      },
+     fontFamily: {
+  outfit: ['Outfit', 'sans-serif'],
+  playfair: ['"Playfair Display"', 'serif'],
+  roboto: ['Roboto', 'sans-serif'],
+  poppins: ['Poppins', 'sans-serif'],
+  montserrat: ['Montserrat', 'sans-serif'],
+  robotoCondensed: ['"Roboto Condensed"', 'sans-serif'],
+  lora: ['Lora', 'serif'],
+  oswald: ['Oswald', 'sans-serif'],
+  jost: ['Jost', 'sans-serif'],   // NEW for tabs
+  cinzel: ['Cinzel', 'serif'],    // NEW for content
+},
+
       keyframes: {
         pop: {
           '0%,100%': { transform: 'scale(0)', opacity: 0 },
