@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/Petsync360/static/css/main.ff03d083.css",
+    "main.js": "/Petsync360/static/js/main.56513e20.js",
+    "static/js/453.86309e5d.chunk.js": "/Petsync360/static/js/453.86309e5d.chunk.js",
+    "static/media/pets.jpg": "/Petsync360/static/media/pets.801cd4b08f0f1cadb94f.jpg",
+    "static/media/petsync2.gif": "/Petsync360/static/media/petsync2.4ba3dc8da8e85fc798bc.gif",
+    "static/media/PetHealth.png": "/Petsync360/static/media/PetHealth.bf0486fd887884e94bd4.png",
+    "static/media/dogs-20159.gif": "/Petsync360/static/media/dogs-20159.dd3f0a68e14ed34bc339.gif",
+    "static/media/pet-home.png": "/Petsync360/static/media/pet-home.fe54578d47002b6b0061.png",
+    "static/media/dog2.jpg": "/Petsync360/static/media/dog2.07ad212102c68b83fa31.jpg",
+    "static/media/BookAppoinment.png": "/Petsync360/static/media/BookAppoinment.573c438426cec71262a0.png",
+    "static/media/dog1.jpg": "/Petsync360/static/media/dog1.2f15f38d8188b110c4e2.jpg",
+    "static/media/Ecommerce.png": "/Petsync360/static/media/Ecommerce.d45c9257fac395055153.png",
+    "static/media/WeOffer.png": "/Petsync360/static/media/WeOffer.1b53ab6f59bcd6aab335.png",
+    "static/media/PetService.jpg": "/Petsync360/static/media/PetService.1605c8d99e33cba71974.jpg",
+    "static/media/vetqa.jpg": "/Petsync360/static/media/vetqa.685a8643d3fbc6c07f46.jpg",
+    "static/media/pet-first-aid.jpg": "/Petsync360/static/media/pet-first-aid.cfb691bffe29405a0cc8.jpg",
+    "static/media/dietpet.jpg": "/Petsync360/static/media/dietpet.132c7f9203291a0d6a73.jpg",
+    "static/media/breedguide.jpg": "/Petsync360/static/media/breedguide.1ba77ef163009164e5a0.jpg",
+    "static/media/petsync-logo.png": "/Petsync360/static/media/petsync-logo.5a2666ecadbd9fc4fb1a.png",
+    "static/media/paw1.png": "/Petsync360/static/media/paw1.b8c86e1b9a01152d654b.png",
+    "static/media/playstore.png": "/Petsync360/static/media/playstore.23f630669d8da5a9a1e4.png",
+    "static/media/apple.png": "/Petsync360/static/media/apple.1511c3d419cb16aec154.png",
+    "index.html": "/Petsync360/index.html",
+    "main.ff03d083.css.map": "/Petsync360/static/css/main.ff03d083.css.map",
+    "main.56513e20.js.map": "/Petsync360/static/js/main.56513e20.js.map",
+    "453.86309e5d.chunk.js.map": "/Petsync360/static/js/453.86309e5d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff03d083.css",
+    "static/js/main.56513e20.js"
+  ]
+}
