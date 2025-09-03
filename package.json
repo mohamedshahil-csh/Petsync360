@@ -2,6 +2,7 @@
   "name": "petsync-admin-panel",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mohamedshahil-csh.github.io/Petsync360",
   "proxy": "https://v3.televet-api.a2zhealth.in",
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -72,12 +73,15 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+ "scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+},  
+
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -101,6 +105,7 @@
     "@types/react-big-calendar": "^1.16.1",
     "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.21",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17"
   }
