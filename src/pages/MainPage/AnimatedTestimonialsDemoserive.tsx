@@ -7,6 +7,7 @@ import MobileShoping from '../../assets/Images/PetHealth.png';
 import Booking from '../../assets/Images/BookAppoinment.png';
 
 import { AnimatedTestimonials } from '../../components/WebPageContent/UI/animated-testimonials';
+import { colors } from '../../constants/Colors';
 
 export function AnimatedTestimonialsDemo() {
   const testimonials = [
@@ -51,25 +52,44 @@ export function AnimatedTestimonialsDemo() {
     },
   };
 
-  // Instead of classes, attach inline styles for fonts
+  // Apply font styles + theme-friendly colors for light background
   const styledTestimonials = testimonials.map(t => ({
     ...t,
-    nameStyle: { fontFamily: "'Cinzel', serif" },
-    quoteStyle: { fontFamily: "'Playfair', serif" },
-    designationStyle: { fontFamily: "'Playfair', serif" },
+    nameStyle: { fontFamily: "'Cinzel', serif", color: '#3B82F6' }, // dark blue for headings
+    quoteStyle: { fontFamily: "'Playfair', serif", color: '#374151' }, // gray-700 for readability
+    designationStyle: { fontFamily: "'Playfair', serif", color: '#6b7280' }, // gray-500 for secondary text
   }));
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8">
-      <motion.h2
-        className="text-3xl sm:text-4xl mt-10 font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-indigo-600"
-        style={{ fontFamily: "'Playfair Display', serif" }}
-        variants={headingVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        Our Services
-      </motion.h2>
+    <div className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 via-white to-blue-50">
+      <motion.div className="text-center mb-16">
+        {/* Gradient Heading */}
+        <motion.h2
+          className="text-4xl md:text-5xl sm:text-5xl font-extrabold inline-block"
+          style={{
+            backgroundImage: `linear-gradient(to right, ${colors.petsyncGradient1.join(', ')})`,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent',
+          }}
+          variants={headingVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          Our Services
+        </motion.h2>
+
+        {/* Gradient Divider */}
+        <div
+          className="w-32 h-1 mx-auto rounded-full shadow-sm mt-4"
+          style={{
+            background: `linear-gradient(to right, ${colors.petsyncGradient1[0]}, ${colors.petsyncGradient1[1]})`,
+          }}
+        />
+      </motion.div>
+
+
 
       <AnimatedTestimonials testimonials={styledTestimonials} />
     </div>

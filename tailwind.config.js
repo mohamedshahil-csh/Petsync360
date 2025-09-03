@@ -6,16 +6,20 @@ module.exports = {
   theme: {
     extend: {
      fontFamily: {
+  titlefont: ['Merriweather', 'serif'],
+  subTitleFont: ['Cinzel', 'serif'],
+    contetTitleFont: ['Lora', 'serif'],
+  contentFont: ['Lora', 'serif'],   
   outfit: ['Outfit', 'sans-serif'],
-  playfair: ['"Playfair Display"', 'serif'],
+
   roboto: ['Roboto', 'sans-serif'],
   poppins: ['Poppins', 'sans-serif'],
   montserrat: ['Montserrat', 'sans-serif'],
   robotoCondensed: ['"Roboto Condensed"', 'sans-serif'],
   lora: ['Lora', 'serif'],
   oswald: ['Oswald', 'sans-serif'],
-  jost: ['Jost', 'sans-serif'],   // NEW for tabs
-  cinzel: ['Cinzel', 'serif'],    // NEW for content
+
+    
 },
 
       keyframes: {

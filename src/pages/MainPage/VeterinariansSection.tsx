@@ -1,5 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import {
   FaUserMd,
   FaDownload,
@@ -12,6 +13,7 @@ import {
   FaDollarSign,
   FaMapMarkedAlt,
 } from "react-icons/fa";
+import { colors } from "../../constants/Colors";
 
 const VeterinariansSection: React.FC = () => {
   const features = [
@@ -24,115 +26,152 @@ const VeterinariansSection: React.FC = () => {
     { icon: <FaMapMarkedAlt />, text: "Reach pet parents anywhere" },
   ];
 
+  // InView hook
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.2 });
+
+  // Smooth feature animation
+  const featureVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+    },
+  };
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-200 py-24">
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-gray-100 text-gray-800 py-24"
+    >
       {/* Animated Background Glow */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(16,185,129,0.15),transparent_70%)] animate-pulse" />
-        <div className="absolute -top-20 -left-20 w-72 h-72 bg-emerald-500/10 blur-[100px] rounded-full animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-500/10 blur-[100px] rounded-full animate-pulse delay-1000" />
-      </div>
+      <motion.div
+        className="absolute -top-20 -left-20 w-80 h-80 bg-blue-400/20 blur-[120px] rounded-full"
+        animate={{ x: [0, 30, -20, 0], y: [0, -20, 20, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-0 right-0 w-80 h-80 bg-pink-400/20 blur-[120px] rounded-full"
+        animate={{ x: [0, -30, 20, 0], y: [0, 20, -20, 0] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Heading */}
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-emerald-400 via-teal-300 font-playfair to-emerald-500 bg-clip-text text-transparent text-center drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]"
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.7 }}
-        >
-          <FaUserMd className="inline-block mr-3 text-emerald-300" />
-          For Veterinarians
-        </motion.h2>
+        <div className="flex justify-center items-center w-full h-full">
+          <div className="text-center">
+  <motion.h2
+    className="text-4xl md:text-5xl sm:text-5xl font-extrabold drop-shadow-[0_0_10px_rgba(59,130,246,0.3)] inline-block"
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+    transition={{ delay: 0.1, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+  >
+    <span className="text-gray-900">For Our </span>
+    <span
+      style={{
+        backgroundImage: `linear-gradient(to right, ${colors.petsyncGradient1.join(', ')})`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        color: 'transparent',
+      }}
+    >
+      Veterinarians
+    </span>
+  </motion.h2>
+
+  {/* Gradient Divider */}
+  <div
+    className="w-20 h-1 mx-auto mt-4 mb-12 rounded-full shadow-sm"
+    style={{
+      backgroundImage: `linear-gradient(to right, ${colors.petsyncGradient1[0]}, ${colors.petsyncGradient1[1]})`,
+    }}
+  />
+</div>
+
+        </div>
+
+
 
         {/* Subtext */}
         <motion.p
-          className="text-lg text-gray-300 mb-14 leading-relaxed text-center max-w-3xl mx-auto font-cinzel"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.7 }}
+          className="text-lg text-gray-600 mb-14 font-subTitleFont leading-relaxed text-center max-w-3xl mx-auto font-cinzel"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          Modern tools for modern vets-streamline your workflow, grow your
+          Modern tools for modern vets — streamline your workflow, grow your
           reach, and deliver exceptional care anytime, anywhere.
         </motion.p>
 
-        {/* Features */}
+        {/* Features Grid */}
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-14"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate={inView ? "visible" : "hidden"}
           variants={{
-            visible: { transition: { staggerChildren: 0.12 } },
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
           }}
         >
           {features.map((f, idx) => (
             <motion.div
               key={idx}
-              className="flex items-center gap-3 bg-white/5 backdrop-blur-lg border border-emerald-500/20 rounded-xl px-5 py-4 shadow-md hover:shadow-emerald-500/40 transition-all duration-300 hover:-translate-y-2 hover:border-emerald-400 font-roboto"
-              variants={{
-                hidden: { opacity: 0, scale: 0.9, y: 20 },
-                visible: { opacity: 1, scale: 1, y: 0 },
-              }}
-              whileHover={{
-                scale: 1.05,
-                rotateX: 5,
-                rotateY: -5,
-                transition: { type: "spring", stiffness: 200 },
-              }}
+              className={`group flex items-center gap-4 bg-white backdrop-blur-md border font-contetTitleFont border-blue-200 rounded-2xl px-6 py-5 shadow-md cursor-pointer
+              ${idx === features.length - 1 ? "sm:col-span-2 lg:col-span-3 sm:justify-center" : ""}`}
+              variants={featureVariants}
+              whileHover={{ scale: 1.05, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }}
             >
-              <span className="text-emerald-400 text-xl">{f.icon}</span>
-              <span className="text-gray-100 font-medium">{f.text}</span>
+              <div
+                className="relative flex items-center justify-center w-12 h-12 rounded-full text-white shadow-md group-hover:scale-110 transition-transform duration-300"
+                style={{
+                  backgroundImage: `linear-gradient(to top right, ${colors.petsyncGradient2[0]}, ${colors.petsyncGradient2[1]})`
+                }}
+              >
+                {f.icon}
+                <span
+                  className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 blur-xl transition duration-300"
+                  style={{
+                    backgroundImage: `linear-gradient(to top right, ${colors.petsyncGradient2[0]}, ${colors.petsyncGradient2[1]})`
+                  }}
+                />
+              </div>
+              <span className="text-gray-700 font-medium">{f.text}</span>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Call to Action Buttons */}
-        <div className="flex flex-wrap justify-center gap-5 font-lora">
+        <motion.div
+          className="flex flex-wrap justify-center gap-6 font-lora"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
           {[
-            {
-              href: "#download",
-              icon: <FaDownload />,
-              text: "Download App",
-              bg: "bg-gradient-to-r from-emerald-500 to-teal-400",
-              textColor: "text-black",
-              hoverGlow: "group-hover:opacity-30",
-            },
-            {
-              href: "#register",
-              icon: <FaClipboardList />,
-              text: "Register as Vet",
-              bg: "border border-emerald-400 text-emerald-300",
-              textColor: "",
-              hoverGlow: "group-hover:opacity-30 bg-emerald-500/20",
-            },
-            {
-              href: "#support",
-              icon: <FaQuestionCircle />,
-              text: "Support",
-              bg: "bg-pink-500",
-              textColor: "text-black",
-              hoverGlow: "group-hover:opacity-30 bg-white/30",
-            },
+            { href: "#download", icon: <FaDownload />, text: "Download App", bg: "bg-gradient-to-r from-blue-600 to-sky-400", textColor: "text-white" },
+            { href: "#register", icon: <FaClipboardList />, text: "Register as Vet", bg: "border border-blue-500 text-blue-600", textColor: "" },
+            { href: "#support", icon: <FaQuestionCircle />, text: "Support", bg: "bg-pink-500 text-white", textColor: "" },
           ].map((btn, i) => (
             <motion.a
               key={i}
               href={btn.href}
-              className={`px-7 py-3 rounded-full font-bold shadow-lg relative overflow-hidden group ${btn.bg} ${btn.textColor}`}
-              whileHover={{ scale: 1.08 }}
+              className={`relative px-8 py-3 rounded-full font-semibold shadow-md overflow-hidden group ${btn.bg} ${btn.textColor}`}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+              }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="flex items-center gap-2 relative z-10">
-                {btn.icon} {btn.text}
-              </span>
-              <span
-                className={`absolute inset-0 opacity-0 transition-opacity ${btn.hoverGlow}`}
-              ></span>
+              <span className="flex items-center gap-2 relative z-10">{btn.icon} {btn.text}</span>
+              <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
             </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

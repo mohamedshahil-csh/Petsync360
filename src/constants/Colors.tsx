@@ -6,4 +6,17 @@ export const statusColorMap: { [key: string]: string } = {
     Unpaid: "bg-red-100 text-red-700",
     Ended: "bg-gray-200 text-gray-600",
     Cancelled: "bg-pink-100 text-pink-700",
-  };
+    Petsync: "bg-[#ed2c59]",
+};
+
+
+  // src/constants/colors.ts
+// src/constants/colors.ts
+export const colors = {
+  petsync: "#3B82F6",   // your main pink/red color
+  petsyncGradient1: ["#3B82F6", "#A855F7"], // first gradient
+  petsyncGradient2: ["#3B82F6", "#A855F7", "#3B82F6"],
+  blueGradient: ["#3b82f6", "#8b5cf6"],
+  greenGradient: ["#10b981", "#22d3ee"],
+};
+

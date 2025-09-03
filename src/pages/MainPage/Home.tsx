@@ -125,7 +125,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center overflow-hidden pt-16 sm:pt-20 relative">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50 flex items-center justify-center overflow-hidden pt-16 sm:pt-20 relative">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -149,7 +149,7 @@ const Home: React.FC = () => {
           <div className="text-2xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl sm:mt-4 font-extrabold leading-tight drop-shadow-md text-center md:text-left">
             <AnimatedScrollSection type="slide" delay={0.01}>
               <div className="flex flex-col items-start">
-                <div className="text-[#ed2c59]">
+                <div className="text-[#3B82F6]">
                   <LeadingWaveText text="All Animals, Great or Small, " />
                   <span className="text-gray-600">Care That Covers It All</span>
                 </div>
@@ -176,7 +176,7 @@ const Home: React.FC = () => {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                 >
-                  <h3 className="text-lg sm:text-xl font-extrabold text-[#ed2c59]">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-[#A855F7]">
                     <CountUp
                       start={0}
                       end={100}
@@ -196,7 +196,7 @@ const Home: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="text-lg sm:text-xl font-bold text-[#ed2c59]">
+                  <h3 className="text-lg sm:text-xl font-bold text-[#A855F7]">
                     India & US
                   </h3>
                   <p className="text-sm sm:text-base text-black animate-wave">Pet Parents</p>
@@ -207,7 +207,7 @@ const Home: React.FC = () => {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                 >
-                  <h3 className="text-lg sm:text-xl font-extrabold text-[#ed2c59]">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-[#A855F7]">
                     <CountUp
                       start={0}
                       end={160}
@@ -304,7 +304,7 @@ const Home: React.FC = () => {
           </motion.div>
         </motion.div>
       </motion.div>
-      
+
       <motion.div
         onClick={openModal}
         className="fixed bottom-8 right-8 z-50 hidden md:block lg:block"

@@ -3,6 +3,7 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import { colors } from "../../../constants/Colors";
 
 type Testimonial = {
     quote: string;
@@ -121,36 +122,46 @@ export const AnimatedTestimonials = ({
                     </div>
                 </div>
                 <div className="flex flex-col justify-between py-4">
-                    <motion.div
-                        key={active}
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -20, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                    >
-                        <h3 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 dark:from-pink-300 dark:to-purple-400 transition-all duration-300 hover:scale-105">
-                            {testimonials[active].name}
-                        </h3>
-                        <p className="text-sm font-medium text-white dark:text-neutral-400 mt-2">
-                            {testimonials[active].designation}
-                        </p>
-                        <motion.p className="mt-2 text-lg text-white dark:text-neutral-200 leading-relaxed">
-                            {testimonials[active].quote.split(" ").map((word, index) => (
-                                <motion.span
-                                    key={index}
-                                    initial={{ filter: "blur(8px)", opacity: 0, y: 10 }}
-                                    animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                                    transition={{
-                                        duration: 0.3,
-                                        ease: "easeOut",
-                                        delay: 0.05 * index,
-                                    }}
-                                    className="inline-block hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors duration-200"
-                                >
-                                    {word}
-                                </motion.span>
-                            ))}
-                        </motion.p>
+<motion.div
+    key={active}
+    initial={{ y: 20, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: -20, opacity: 0 }}
+    transition={{ duration: 0.3, ease: "easeInOut" }}
+>
+    <h3
+        className="text-3xl font-extrabold transition-all duration-300 hover:scale-105 inline-block"
+        style={{
+            backgroundImage: `linear-gradient(to right, ${colors.petsyncGradient2.join(', ')})`,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent',
+        }}
+    >
+        {testimonials[active].name}
+    </h3>
+                        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 mt-2">
+  {testimonials[active].designation}
+</p>
+<motion.p className="mt-2 text-lg text-gray-800 dark:text-gray-200 leading-relaxed">
+  {testimonials[active].quote.split(" ").map((word, index) => (
+    <motion.span
+      key={index}
+      initial={{ filter: "blur(8px)", opacity: 0, y: 10 }}
+      animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.3,
+        ease: "easeOut",
+        delay: 0.05 * index,
+      }}
+      className="inline-block hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
+    >
+      {word}{" "}
+    </motion.span>
+  ))}
+</motion.p>
+
                     </motion.div>
                     <div className="flex flex-col items-center gap-4 pt-12 md:pt-0">
                         <div className="flex gap-2">
