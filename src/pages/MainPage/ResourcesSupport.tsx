@@ -75,8 +75,8 @@ const ResourceSection = ({
           <h3
             id={`section-title-${index}`}
             className={`text-xl font-semibold transition-colors duration-300 ${isActive
-                ? "text-blue-600"
-                : "text-gray-900 group-hover:text-blue-600"
+              ? "text-blue-600"
+              : "text-gray-900 group-hover:text-blue-600"
               }`}
           >
             {item.title}
@@ -169,10 +169,10 @@ const ResourcesSupport: React.FC = () => {
           </span>
         </h1>
         <span className="block h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-6"></span>
-        <p className="text-base sm:text-lg text-gray-700 max-w-xl mx-auto leading-relaxed font-cinzel">
+        <p className="text-base sm:text-lg text-gray-700 max-w-xl mx-auto leading-relaxed font-subTitleFont">
           Explore{" "}
-          <span className="font-semibold text-blue-600">pet care expertise</span>{" "}
-          — your go-to resource for keeping furry friends thriving.
+          <span className="font-semibold text-blue-600 font-subTitleFont">pet care expertise</span>{" "}
+          - your go-to resource for keeping furry friends thriving.
         </p>
       </motion.div>
 
@@ -202,10 +202,10 @@ const ResourcesSupport: React.FC = () => {
             <motion.div
               key={i}
               className={`absolute w-24 h-24 rounded-full opacity-20 blur-2xl ${i === 0
-                  ? "bg-blue-200 top-10 right-10"
-                  : i === 1
-                    ? "bg-purple-200 bottom-20 left-16"
-                    : "bg-pink-200 top-32 left-32"
+                ? "bg-blue-200 top-10 right-10"
+                : i === 1
+                  ? "bg-purple-200 bottom-20 left-16"
+                  : "bg-pink-200 top-32 left-32"
                 }`}
               animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
               transition={{ duration: 10 + i * 2, repeat: Infinity, ease: "easeInOut" }}
